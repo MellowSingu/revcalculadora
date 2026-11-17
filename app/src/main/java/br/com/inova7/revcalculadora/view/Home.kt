@@ -34,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.inova7.revcalculadora.datasource.Calculations
 import br.com.inova7.revcalculadora.ui.theme.Blue
 import br.com.inova7.revcalculadora.ui.theme.Red
 import br.com.inova7.revcalculadora.ui.theme.White
@@ -141,6 +142,14 @@ Alignment.CenterVertically
 
             Button(
                 onClick = {
+                    Calculations.calculateIMC(
+                        height = height,
+                        weight = weight
+                    ) {
+                        result,isError ->
+                        resultMessage = result
+                        textFieldError = isError
+                    }
 
                 },
                 colors = ButtonDefaults.buttonColors(
